@@ -1,0 +1,15 @@
+module AddressComparator_Associative (
+    input [24:0] AddressBus,
+    input [24:0] TagData,
+    output reg Hit_H
+);
+
+// Process equivalent in Verilog: always block sensitive to changes in AddressBus or TagData
+always @(AddressBus or TagData) begin
+    if (AddressBus == TagData)
+        Hit_H <= 1'b1; // Match found, set Hit_H high
+    else
+        Hit_H <= 1'b0; // No match, set Hit_H low
+end
+
+endmodule

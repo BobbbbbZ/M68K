@@ -1,0 +1,10 @@
+module SPI_BUS_Decoder (
+        input unsigned [31:0] Address,
+        input SPI_Select_H,
+        input AS_L,
+        output reg SPI_Enable_H
+);
+
+assign SPI_Enable_H = Address[15:4] == 3'h802 & SPI_Select_H & ~AS_L;
+
+endmodule
